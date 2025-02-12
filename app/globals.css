@@ -3,19 +3,57 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #02191D;
+  --foreground: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a.active > p {
+  @apply  text-white
+}
+
+/* .pop-out {
+  animation: pop-out 0.5s ease;
+  -webkit-animation: pop-out 0.5s ease;
+}
+
+@keyframes pop-out {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+} */
+
+.slide-up-now {
+  -webkit-animation: slide-up .6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;
+  -moz-animation: slide-up .6s  cubic-bezier(0.4, 0, 0.2, 1) 0.1s backwards;
+  animation: slide-up .6s  cubic-bezier(0.4, 0, 0.2, 1) 0.1ms backwards;
+}
+
+@keyframes slide-up {
+  0% { 
+    -webkit-transform: translateY(100%); 
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% { 
+    -webkit-transform: translateY(0); 
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
