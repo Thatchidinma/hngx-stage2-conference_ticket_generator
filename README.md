@@ -22,10 +22,7 @@ Note: Only React or any React Framework is allowed.
     * All elements must be focusable, with clear hover and focus states.
     * Users must be able to navigate the form and submit it using only the keyboard.
 5. Ticket Generation
-    * On successful submission, generate and display a Conference Ticket containing:
-        Full Name
-        Email Address
-        Avatar (displayed as an image from the provided URL)
+    * On successful submission, generate and display a Conference Ticket containing: Full Name, Email Address and Avatar (displayed as an image from the provided URL)
     * The ticket should only be generated if the form passes validation.
 6. Responsive Design
     * Ensure the form and ticket layout adjust seamlessly across different screen sizes .
