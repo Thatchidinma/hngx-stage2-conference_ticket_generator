@@ -21,9 +21,7 @@ const EventLayout = ({children}) => {
         max="9"
         value={pathname === '/event' ? 3 : (pathname === '/event/attendee-details' ? 6 : 9)}
         />
-        <section className='slide-up-now bg-[#08252B] lg:border border-border rounded-[32px] lg:p-6 mt-8'>
         {children}
-        </section>
     </main>
     </div>
   )
