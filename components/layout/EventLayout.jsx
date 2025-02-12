@@ -10,7 +10,7 @@ const EventLayout = ({children}) => {
 
   return (
     <div className="flex justify-center mt-5 lg:mt-[2.8rem]">
-    <main className=" w-full lg:w-[700px] border border-border bg-[#08252B] lg:bg-green-1 rounded-[40px] p-6 lg:p-12 lg:pt-10">
+    <main className=" w-full lg:w-[702px] border border-border bg-[#08252B] lg:bg-green-1 rounded-[40px] p-6 lg:p-12 lg:pt-10">
         <div className="flex flex-col md:flex-row justify-between md:items-center">
             <Title text={pathname === '/event' ? 'Ticket Selection' : (pathname === '/event/attendee-details' ? 'Attendee details' : 'Ready')}/>
             <div className="">

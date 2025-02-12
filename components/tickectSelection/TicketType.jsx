@@ -11,7 +11,7 @@ const TicketType = () => {
         {
             type: 'VIP',
             slots: '20',
-            price: '$50'
+            price: '$150'
         },
         {
             type: 'VVIP',
@@ -24,22 +24,22 @@ const TicketType = () => {
     console.log(clicked)
     const TicketList = ticketTypes.map((ticket, index) => {
         return(
-            <button key={index} onClick={()=>{SetClicked(ticket.type)}} className={`${clicked === ticket.type ? 'bg-[#197686] border-[#197686]' : 'border-border'} border flex justify-between  p-2 rounded-xl gap-1`}>
-                <div className="text-start grid gap-1">
-                    <p className="text-base tracking-tighter">{ticket.type} ACCESS</p>
-                    <p className="text-sm">{ticket.slots} left!</p>
-                </div>
+            <button key={index} onClick={()=>{SetClicked(ticket.type)}} className={`${clicked === ticket.type ? 'bg-[#197686]/50 border' : '  border-2 '}  border-[#197686] flex flex-col justify-between  p-3 py-2 pb-4 rounded-xl gap-2`}>
                 <div className="">
-                    <div className="border border-[#2BA4B9] bg-border rounded-lg py-1 px-2 min-w-[80px] text-xl font-bold text-end">{ticket.price} </div>
+                    <div className="text-2xl font-semibold">{ticket.price} </div>
+                </div>
+                <div className="text-start grid w-full">
+                    <p className="text-[16px] tracking-tighter font-medium ">{ticket.type} ACCESS</p>
+                    <p className="text-sm">{ticket.slots} /52</p>
                 </div>
             </button>
         )
     })
 
   return (
-    <section>
+    <section className='mt-2'>
       <p className="">Select Ticket Type:</p>
-      <div className="border border-border bg-[#052228] mt-2 p-4 rounded-3xl grid md:grid-cols-2 gap-6">
+      <div className="border border-border bg-[#052228] mt-2 p-3 rounded-3xl grid md:grid-cols-3 gap-5">
         {TicketList}
       </div>
     </section>

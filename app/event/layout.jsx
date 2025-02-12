@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} antialiased p-5 lg:px-[120px] lg:py-6`}
+        className={`${roboto.className} antialiased p-5 lg:px-[120px] lg:py-6`}
       >
         <Nav/>
         <EventLayout>

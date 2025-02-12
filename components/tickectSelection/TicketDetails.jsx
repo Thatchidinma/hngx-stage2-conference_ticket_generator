@@ -16,7 +16,7 @@ const TicketDetails = () => {
       <Divider/>
       <TicketType/>
       <NoOfTicket/>
-      <ButtonPair text1={'Cancel'} text2={'Next'} onClick_2={()=>{route.push("/event/attendee-details")}} className='md:border border-border md:bg-green-1 gap-4 md:gap-8 md:rounded-full md:px-12'/>
+      <ButtonPair text1={'Cancel'} text2={'Next'} onClick_2={()=>{route.push("/event/attendee-details")}}/>
     </section>
   )
 }
