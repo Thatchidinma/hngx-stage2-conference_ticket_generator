@@ -24,7 +24,7 @@ const TicketType = () => {
     console.log(clicked)
     const TicketList = ticketTypes.map((ticket, index) => {
         return(
-            <button key={index} onClick={()=>{SetClicked(ticket.type)}} className={`${clicked === ticket.type ? 'bg-[#197686]/50 border' : '  border-2 '}  border-[#197686] flex flex-col justify-between  p-3 py-2 pb-4 rounded-xl gap-2`}>
+            <button key={index} onClick={()=>{SetClicked(ticket.type)}} className={`${clicked === ticket.type ? 'bg-[#12464E] border' : '   '} border-2 hover:bg-[#2C545B] border-[#197686] flex flex-col justify-between  p-3 py-2 pb-4 rounded-xl gap-2`}>
                 <div className="">
                     <div className="text-2xl font-semibold">{ticket.price} </div>
                 </div>
@@ -39,7 +39,7 @@ const TicketType = () => {
   return (
     <section className='mt-2'>
       <p className="">Select Ticket Type:</p>
-      <div className="border border-border bg-[#052228] mt-2 p-3 rounded-3xl grid md:grid-cols-3 gap-5">
+      <div className="border border-border bg-[#052228] mt-2 p-3 rounded-3xl grid md:grid-cols-3 gap-[17px]">
         {TicketList}
       </div>
     </section>
