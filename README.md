@@ -55,3 +55,8 @@ Note: Only React or any React Framework is allowed.
 
 ## My Solution
 
+
+### Resources
+Down arrow by Angga Yudotomo on IconScout
+
+
