@@ -1,20 +1,11 @@
-import Nav from "@/components/layout/Nav";
-import { roboto } from "../font";
-import "../globals.css";
 import EventLayout from "@/components/layout/EventLayout";
+import RootLayout from "../layout";
 
 export default function Layout({ children }) {
 
   return (
-    <html lang="en">
-      <body
-        className={`${roboto.className} antialiased p-5 lg:px-[120px] lg:py-6`}
-      >
-        <Nav/>
-        <EventLayout>
-            {children}
-        </EventLayout>
-      </body>
-    </html>
+    <EventLayout>
+        {children}
+    </EventLayout>
   );
 }
