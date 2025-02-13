@@ -1,9 +1,10 @@
+import { TicketDetailsContext } from '@/context/TickectDetailsContext'
 import ArrDown from '@/icons/ArrDown'
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 const NoOfTicket = () => {
   const [showDropdown, SetShowDropdown] = useState(false)
-  const [noTicket, setNoTicket] = useState(1)
+  const {noTicket, setNoTicket} = useContext(TicketDetailsContext)
 
   const addTicket = ()=> {
     setNoTicket(noTicket + 1)

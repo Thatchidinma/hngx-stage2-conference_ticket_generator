@@ -1,7 +1,10 @@
 'use client'
-import React, { useState } from 'react'
+import { TicketDetailsContext } from '@/context/TickectDetailsContext'
+import React, { useContext, useEffect} from 'react'
 
 const TicketType = () => {
+    const {ticketType, setTicketType} = useContext(TicketDetailsContext)
+    
     const ticketTypes = [
         {
             type: 'REGULAR',
@@ -20,11 +23,9 @@ const TicketType = () => {
         },
     ]
 
-    const [clicked, SetClicked] = useState('REGULAR')
-    console.log(clicked)
     const TicketList = ticketTypes.map((ticket, index) => {
         return(
-            <button key={index} onClick={()=>{SetClicked(ticket.type)}} className={`${clicked === ticket.type ? 'bg-[#12464E] border' : '   '} border-2 hover:bg-[#2C545B] border-[#197686] flex flex-col justify-between  p-3 py-2 pb-4 rounded-xl gap-2`}>
+            <button key={index} onClick={()=>{setTicketType(ticket.type)}} className={`${ticketType === ticket.type ? 'bg-[#12464E] border' : '   '} border-2 hover:bg-[#2C545B] border-[#197686] flex flex-col justify-between  p-3 py-2 pb-4 rounded-xl gap-2`}>
                 <div className="">
                     <div className="text-2xl font-semibold">{ticket.price} </div>
                 </div>
