@@ -7,7 +7,7 @@ import React, { useContext } from 'react'
 import { useRef } from "react";
 import html2canvas from "html2canvas";
 import ButtonPair from '../layout/ButtonPair'
-import samp from '@/public/sample2.png'
+import samp from '@/public/sample.png'
 import { useRouter } from 'next/navigation'
 
 
