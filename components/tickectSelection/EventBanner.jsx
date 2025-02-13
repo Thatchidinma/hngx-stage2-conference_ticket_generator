@@ -10,13 +10,13 @@ const EventBanner = () => {
       </div>
       <div className='flex flex-col gap-10 lg:gap-2  items-center'>
       <p className="text-sm lg:text-base max-w-[340px]">Join us for an unforgettable experience at Techember Fest ”25! Secure your spot now.</p>
-      <div className="flex flex-col lg:flex-row justify-between items-center w-full lg:w-72 ">
+      <div className="flex flex-col lg:flex-row justify-between items-center w-full  ">
         <div className="flex gap-1 ">
-            <Pin/>
-            <p className="">Lagos</p>
+            <p>📍</p>
+            <p className="">04 Rumens road, Lagos </p>
         </div>
 
-        <p className=" hidden lg:inline">| |</p>
+        <p className=" hidden lg:inline">&#160;&#160;| |&#160;&#160;</p>
 
         <p className="">March 15, 2025 | 7:00 PM</p>
 
