@@ -37,7 +37,7 @@ export const TicketDetailsProvider = ({ children }) => {
       localStorage.setItem('email', email);
       localStorage.setItem('request', request);
       localStorage.setItem('noTicket', noTicket);
-      localStorage.setItem('REGULAR', ticketType);
+      localStorage.setItem('ticketType', ticketType);
       }
     }, [noTicket, name, email, request, ticketType]);
 
