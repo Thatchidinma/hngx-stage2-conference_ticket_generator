@@ -54,7 +54,7 @@ Note: Only React or any React Framework is allowed.
     * Implement proper form element types and validation techniques.
 
 ## My Solution
-
+.
 
 ### Resources
 Down arrow by Angga Yudotomo on IconScout
