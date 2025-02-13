@@ -21,11 +21,9 @@ const AttendeeForm = () => {
     .optional()
   })
 
-  const {register, handleSubmit,watch, formState:{errors}} = useForm({resolver: zodResolver(schema)})
+  const {register, handleSubmit, formState:{errors}} = useForm({resolver: zodResolver(schema)})
 
-  const nameValue = watch("name");
-  const emailValue = watch("email");
-  const messageValue = watch("specialRequest");
+ 
 
   useEffect(()=>{
     localStorage.setItem('name', nameValue);
