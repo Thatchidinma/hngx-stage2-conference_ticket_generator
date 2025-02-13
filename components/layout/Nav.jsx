@@ -12,14 +12,16 @@ const Nav = () => {
 
   return (
     <header className={` ${jejuMyeongjo.className} text-lg w-full h-[76px] flex justify-between items-center py-3 px-4 border border-[#197686] bg-green-1 rounded-3xl`}>
-        <Image
-        src={logo}
-        height={94}
-        width={93}
-        alt='logo'
-        />
+        <Link href='/'>
+          <Image
+          src={logo}
+          height={94}
+          width={93}
+          alt='logo'
+          />
+        </Link>
 
-        <nav className=" md:flex gap-9 pt-1 hidden text-[#B3B3B3] ">
+        <nav className=" lg:flex gap-9 pt-1 hidden text-[#B3B3B3] ">
             <Link href="/event" className={`${pathname.includes( "/event" ) ? "active" : ""} `}><p>Events</p></Link>
             <Link href="/my_tickets" className={`${pathname == "/my_tickets" ? "active" : ""} `}><p>My Tickets</p></Link>
             <Link href="/project" className={`${pathname == "/project" ? "active" : ""} `}><p>About Project</p></Link>
