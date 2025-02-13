@@ -11,7 +11,7 @@ const TicketDetails = () => {
   const route = useRouter();
 
   return (
-    <section className='slide-up-now bg-[#08252B] lg:border border-border rounded-[32px] lg:p-6 mt-8'>
+    <section className='slide-up-now bg-[#08252B] md:border border-border rounded-[32px] md:p-6 mt-8'>
       <EventBanner/>
       <Divider/>
       <TicketType/>
