@@ -19,12 +19,15 @@ export const TicketDetailsProvider = ({ children }) => {
   const [request, setRequest] = useState(localStorage.getItem('request') || '');
   const [loading, setLoading] = useState(true)
 
+  
     useEffect(() => {
+      if (typeof window !== 'undefined') {
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
       localStorage.setItem('request', request);
       localStorage.setItem('noTicket', noTicket);
       localStorage.setItem('REGULAR', ticketType);
+      }
     }, [noTicket, name, email, request, ticketType]);
 
 
