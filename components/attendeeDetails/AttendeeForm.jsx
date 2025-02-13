@@ -17,7 +17,7 @@ const AttendeeForm = () => {
   const schema = z.object({
     name : z.string().min(2).max(10),
     email : z.string().email(),
-    specialRequest : z.union([z.string().length(0), z.string().min(2).max(100)])
+    specialRequest : z.union([z.string().length(0), z.string().min(2).max(60)])
     .optional()
   })
 
@@ -65,8 +65,8 @@ const AttendeeForm = () => {
 
         <div className="mb-8">
         <label htmlFor="request">Special request?</label>
-        <textarea id='request' name='request' {...register('specialRequest')} className='bg-inherit border border-border w-full rounded-2xl mt-2  outline-none p-3' rows={4}></textarea>
-        {errors.specialRequest && (<p className='text-sm text-red-400 mt-96'>{errors.specialRequest.message}</p>)}
+        <textarea id='request' name='request' {...register('specialRequest')} className='bg-inherit border border-border w-full rounded-2xl mt-2  outline-none p-3 ' rows={4}></textarea>
+        {errors.specialRequest && (<p className='text-sm text-red-400 mt-1'>Should not be more than 60 characters</p>)}
         </div>
 
         <ButtonPair text1={'Back'} text2={'Get My Free Ticket'} onClick_1={()=>{route.push("/event")}} className='gap-4'/>

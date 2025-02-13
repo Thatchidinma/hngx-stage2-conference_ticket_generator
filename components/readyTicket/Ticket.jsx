@@ -48,7 +48,7 @@ const Ticket = () => {
             </div>
             <div className='py-2 px-3'>
               <p className="text-xs text-[#5A777C]">Special request?</p>
-              <p className="text-xs pt-1">{request ? request : 'Nil'}</p>
+              <p className="text-xs pt-1 break-words">{request ? request : 'Nil'}</p>
             </div>
           </div>
         </div>
