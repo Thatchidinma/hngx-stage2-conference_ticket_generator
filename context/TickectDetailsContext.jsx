@@ -19,6 +19,17 @@ export const TicketDetailsProvider = ({ children }) => {
   const [request, setRequest] = useState('');
   const [loading, setLoading] = useState(true)
 
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setName(localStorage.getItem("name") || "");
+      setEmail(localStorage.getItem("email") || "");
+      setTicketType(localStorage.getItem("ticketType") || "REGULAR");
+      setNoTicket(parseInt(localStorage.getItem("noTicket")) || 1);
+      setRequest(localStorage.getItem("request") || "");
+    }
+  }, []);
+
   
     useEffect(() => {
       if (typeof window !== 'undefined') {
