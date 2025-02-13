@@ -14,8 +14,8 @@ export const TicketDetailsContext = createContext(undefined);
 export const TicketDetailsProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState( '');
-  const [ticketType, setTicketType] = useState( 'REGULAR');
-  const [noTicket, setNoTicket] = useState(() =>  1);
+  const [ticketType, setTicketType] = useState(localStorage.getItem('ticketType') || 'REGULAR');
+  const [noTicket, setNoTicket] = useState(() => parseInt(localStorage.getItem('noTicket')) || 1);
   const [request, setRequest] = useState('');
   const [loading, setLoading] = useState(true)
 
