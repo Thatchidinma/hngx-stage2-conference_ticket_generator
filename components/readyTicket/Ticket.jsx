@@ -33,7 +33,6 @@ const Ticket = () => {
       link.download = "downloaded-image.png"; // File name
       link.click(); // Trigger the download
     }; 
-    
 
   return (
     <>
@@ -84,7 +83,7 @@ const Ticket = () => {
         <Barcode className='m-auto mt-10'/>
       </div>
     </div>
-    <ButtonPair text1={'Book Another Ticket'} text2={'Download Ticket'} onClick_1={()=>{route.push("/event")}} onClick_2={()=>{handleDownloadImage()}}  className='gap-4'/>
+    <ButtonPair text1={'Book Another Ticket'} text2={'Download Ticket'} onClick_1={()=>{route.push("/event", localStorage.clear() )}} onClick_2={()=>{handleDownloadImage(), localStorage.clear()}}  className='gap-4'/>
     </>
   )
 }
