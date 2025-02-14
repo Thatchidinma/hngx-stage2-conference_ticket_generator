@@ -1,6 +1,7 @@
 import { TicketDetailsContext } from '@/context/TickectDetailsContext'
 import SpinnerIcon from '@/icons/Spinner'
-import Upload from '@/icons/Upload'
+import UploadIcon from '@/icons/Upload'
+import UseUploadImage from '@/lib/actions/use-upload-image'
 import Image from 'next/image'
 import React, { useContext, useEffect } from 'react'
 import { useCallback, useState } from "react"
@@ -8,9 +9,8 @@ import { useDropzone } from "react-dropzone"
 
 const ImageUpload = () => {
   const [dataURL, setDataURL] = useState(null)
-  const [uploadedURL, setUploadedURL] = useState(null)
-  const {imageUrl, setImageUrl} = useContext(TicketDetailsContext)
-  const [loading, setLoading] = useState(false)
+  const {imageUrl} = useContext(TicketDetailsContext)
+  const{uploadImage, uploading} = UseUploadImage()
 
 
   const onDrop = useCallback(acceptedFiles => {
@@ -35,41 +35,18 @@ const ImageUpload = () => {
 
   const selectedFile = acceptedFiles[0]
 
-  const uploadImage = async () => {
-    setLoading(true)
-    let formData = new FormData()
-
-    formData.append("file", selectedFile)
-    formData.append("upload_preset", 'HNG_Stage2')
-    formData.append("api_key", process.env.NEXT_PUBLIC_API_KEY)
-
-    await fetch("https://api.cloudinary.com/v1_1/thatchidinma/image/upload", {
-      method: "POST",
-      body: formData,
-    })
-      .then(r => {
-        return r.json()
-      })
-      .then(data => {
-        console.log(data.url)
-        setImageUrl(data.url)
-        setLoading(false)
-      })
-
-  }
-
   useEffect(()=>{ 
     if (dataURL) { 
-      uploadImage(); 
+      uploadImage(selectedFile); 
     }
   },[dataURL])
 
   return (
     <div className='border border-border p-6 rounded-3xl bg-[#052228] cursor-pointer' {...getRootProps()}>
-      <input  {...getInputProps()} />
+      <input  {...getInputProps({required: true})} />
       {
         isDragActive ? <div className=" w-full h-[280px] border-2 border-dashed border-border rounded-3xl flex justify-center items-center">
-          <Upload/>
+          <UploadIcon/>
           <p className="">Drop here</p>
         </div> :
          <>
@@ -85,10 +62,10 @@ const ImageUpload = () => {
               />}
                 <div className={`${ imageUrl ? 'hover:z-50 bg-black/20' : '' } w-60 h-60  absolute flex flex-col items-center justify-center`}>
                 {
-                  loading ? <SpinnerIcon/> 
+                  uploading ? <div className="animate-spin"><SpinnerIcon/></div> 
                   :
                   <>
-                    <Upload/>
+                    <UploadIcon/>
                     <p className="">Drag & drop or click to <br/>upload</p>
                   </>
                 }

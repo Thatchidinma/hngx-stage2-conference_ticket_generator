@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ButtonPair from '../layout/ButtonPair'
 import { useRouter } from 'next/navigation'
 import ImageUpload from './ImageUpload'
@@ -12,7 +12,8 @@ import { TicketDetailsContext } from '@/context/TickectDetailsContext'
 
 const AttendeeForm = () => {
   const route = useRouter();
-  const {name, setName,email, setEmail, request, setRequest} = useContext(TicketDetailsContext)
+  const {name, setName,email, setEmail, request, setRequest, imageUrl} = useContext(TicketDetailsContext)
+  const [isImagefilled, setImagefilled] = useState(true)
   
   const schema = z.object({
     name : z.string()
@@ -43,15 +44,21 @@ const AttendeeForm = () => {
 
 
   const submitData = (data) =>{
-    setName(data.name),
-    setEmail(data.email)
-    setRequest(data.specialRequest)
-    route.push("/event/ready-ticket")
+    if(imageUrl){
+      setName(data.name),
+      setEmail(data.email)
+      setRequest(data.specialRequest)
+      route.push("/event/ready-ticket")
+    }else{
+      setImagefilled(false)
+    }
   }
 
   return (
     <section className='slide-up-now bg-[#08252B] lg:border border-border rounded-[32px] lg:p-6 mt-8'>
       <ImageUpload/>
+      {!isImagefilled && <p className='text-sm text-red-400 mt-1'>please select an image</p>}
+
       <Divider/>
       <form onSubmit={handleSubmit(submitData)} className=''>
         <div className="mb-8">
@@ -64,7 +71,7 @@ const AttendeeForm = () => {
         <label htmlFor="email">Enter your email *</label>
         <div className="relative">
           <Envelope className='absolute left-4 top-5'/>
-          <input name='email' id='email' {...register('email')} placeholder='hello@gmail.com' type="email" className='bg-inherit border border-border w-full rounded-2xl mt-2 outline-none pl-12 p-3 placeholder:text-white'/>
+          <input name='email' id='email' {...register('email')} placeholder='hello@gmail.com' type="email" className='bg-inherit border border-border w-full rounded-2xl mt-2 outline-none pl-12 p-3  '/>
         </div>
         {errors.email && <p className='text-sm text-red-400 mt-1'>{errors.email.message}, please enter a valid email</p>}
         </div>

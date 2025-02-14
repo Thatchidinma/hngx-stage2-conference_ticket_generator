@@ -3,35 +3,21 @@ import { TicketDetailsContext } from '@/context/TickectDetailsContext'
 import Barcode from '@/icons/Barcode'
 import TickectBackground from '@/icons/TickectBackground'
 import Image from 'next/image'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useRef } from "react";
-import html2canvas from "html2canvas";
 import ButtonPair from '../layout/ButtonPair'
-import { useRouter } from 'next/navigation'
+import { UseClear } from '@/lib/actions/use-clear'
+import { UseDownloadImage } from '@/lib/actions/use-download-image'
+import samp from '@/public/sample.png'
 
 
 const Ticket = () => {
   const {name, email, request, ticketType,noTicket, imageUrl} = useContext(TicketDetailsContext)
+  const {handleClearAndNavigate} = UseClear()
+  const {handleDownloadImage} = UseDownloadImage()
+  const {show, setShow} = useState()
 
-  const route = useRouter();
-
-    const elementRef = useRef();
-
-    const handleDownloadImage = async () => {
-      const element = elementRef.current;
-  
-      // Render the element to a canvas
-      const canvas = await html2canvas(element);
-      
-      // Convert the canvas to a data URL (image)
-      const imageUrl = canvas.toDataURL("image/png");
-  
-      // Create a download link dynamically
-      const link = document.createElement("a");
-      link.href = imageUrl;
-      link.download = "downloaded-image.png"; // File name
-      link.click(); // Trigger the download
-    }; 
+  const elementRef = useRef();
 
   return (
     <>
@@ -49,7 +35,7 @@ const Ticket = () => {
              <Image
               width={130}
               height={130}
-              src={imageUrl}
+              src={imageUrl ? imageUrl : samp}
               alt='tickect image'
               className=' w-[130px] h-[130px] object-cover'
              />
@@ -83,7 +69,8 @@ const Ticket = () => {
         <Barcode className='m-auto mt-10'/>
       </div>
     </div>
-    <ButtonPair text1={'Book Another Ticket'} text2={'Download Ticket'} onClick_1={()=>{route.push("/event" )}} onClick_2={()=>{handleDownloadImage(), localStorage.clear()}}  className='gap-4'/>
+    <p className={` text-center md:text-end text-[12px] text-white/50`}>NB: download on a mobile device for best alignmet</p>
+    <ButtonPair text1={'Book Another Ticket'} text2={'Download Ticket'} onClick_1={()=>handleClearAndNavigate()} onClick_2={()=>{handleDownloadImage(elementRef)}}  className='gap-4' button2ClassName={`$`}/>
     </>
   )
 }

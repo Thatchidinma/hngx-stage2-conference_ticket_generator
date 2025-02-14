@@ -3,11 +3,10 @@ import * as React from "react";
 const SpinnerIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
+    width="30"
+    height="30"
     fill="none"
     viewBox="0 0 48 48"
-    className="animate-spin-slow"
   >
     <path
       fill="#595D62"
