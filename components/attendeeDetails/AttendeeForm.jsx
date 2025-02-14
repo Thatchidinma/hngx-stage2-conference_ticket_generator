@@ -63,7 +63,7 @@ const AttendeeForm = () => {
       <form onSubmit={handleSubmit(submitData)} className=''>
         <div className="mb-8">
           <label htmlFor="name">Enter your name</label>
-          <input id='name' onChange={(e)=> setName(e.target.value)} name='name' {...register('name')} type="text" className='bg-inherit border border-border w-full rounded-2xl mt-2 outline-none p-3'/>
+          <input id='name'  name='name' {...register('name')} type="text" className='bg-inherit border border-border w-full rounded-2xl mt-2 outline-none p-3'/>
           {errors.name && <p className='text-sm text-red-400 mt-1'>{errors.name.message}</p>}
         </div>
 
