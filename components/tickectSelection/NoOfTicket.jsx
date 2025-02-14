@@ -7,7 +7,9 @@ const NoOfTicket = () => {
   const {noTicket, setNoTicket} = useContext(TicketDetailsContext)
 
   const addTicket = ()=> {
-    setNoTicket(noTicket + 1)
+    if(noTicket !== 52){
+      setNoTicket(noTicket + 1)
+    }
   }
 
   const reduceTicket = ()=> {
@@ -30,6 +32,7 @@ const NoOfTicket = () => {
           <p onClick={()=>{reduceTicket()}} className="text-2xl border border-border bg-green-1 px-8 py-4 rounded-2xl hover:bg-[#197686]/50 cursor-pointer">-</p>
         </div>
       </div>
+      {noTicket === 52 && <p className='text-sm text-red-400 mt-1'>sold out</p>}
 
     </section>
   )
