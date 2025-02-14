@@ -2,6 +2,7 @@
 import ButtonPair from '@/components/layout/ButtonPair'
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const ProjectHome = () => {
     const route = useRouter();
@@ -95,7 +96,8 @@ const ProjectHome = () => {
                 <li>Integrating payment gateways for ticket purchases.</li>
                 <li>Generating & validating QR Codes for event check-in (Advanced).</li>
             </ul>
-            <p className="my-8 text-center font-semibold ">Need Help? Reach Out! 💬</p>
+            <p className="mt-8 text-center font-semibold ">Need Help? Reach Out! 💬</p>
+            <Link href={"http://thatchidinma.com"}><p className="mt-4 mb-8 text-center hover:scale-110 animate ease-in-out w-fit mx-auto"> <span className="text-4xl">👩🏾‍💻</span>  Thatchidinma.com</p></Link>
 
             <ButtonPair className='border border-border px-8 py-4 rounded-2xl w-[80%] m-auto ' text1={'Design File'} text2={'Github Code'} onClick_1={()=>{route.push('https://www.figma.com/design/zrf46XZuo6VPYREhZQTjQr/Event-Ticket-Booking-UI-%E2%80%93-Open-Source-Practice-Project-%F0%9F%8E%9F%EF%B8%8F-(Community)?node-id=2-142&t=AIMycAwC5pdeg1Qt-1')}} onClick_2={()=>{route.push("https://github.com/Thatchidinma/hngx-stage2-conference_ticket_generator")}}/>
         </main>

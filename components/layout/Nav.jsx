@@ -23,7 +23,8 @@ const Nav = () => {
 
         <nav className=" lg:flex gap-9 pt-1 hidden text-[#B3B3B3] ">
             <Link href="/event" className={`${pathname.includes( "/event" ) ? "active" : ""} `}><p>Events</p></Link>
-            <Link href="/my_tickets" className={`${pathname == "/my_tickets" ? "active" : ""} `}><p>My Tickets</p></Link>
+            {/* <Link href="/my_tickets" className={`${pathname == "/my_tickets" ? "active" : ""} `}><p>My Tickets</p></Link> */}
+            <p>My Tickets</p>
             <Link href="/project" className={`${pathname == "/project" ? "active" : ""} `}><p>About Project</p></Link>
         </nav>
 
