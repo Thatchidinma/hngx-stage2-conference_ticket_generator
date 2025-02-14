@@ -1,14 +1,20 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '@/public/event_logo.png'
 import Link from 'next/link'
 import { jejuMyeongjo } from "@/app/font";
 import ArrRightIcon from '@/icons/ArrRight';
 import { usePathname } from 'next/navigation';
+import ArrSlantIcon from '@/icons/ArrSlant'
 
 const Nav = () => {
   const pathname = usePathname()
+  const [hover, setHover] = useState(false);
+
+  const handleMouseEnter = () => setHover(true);
+  const handleMouseLeave = () => setHover(false);
+
 
   return (
     <header className={` ${jejuMyeongjo.className} text-lg w-full h-[76px] flex justify-between items-center py-3 px-4 border border-[#197686] bg-green-1 rounded-3xl`}>
@@ -28,9 +34,14 @@ const Nav = () => {
             <Link href="/project" className={`${pathname == "/project" ? "active" : ""} `}><p>About Project</p></Link>
         </nav>
 
-        <button className='flex justify-between w-[141px] md:w-[169px] md:h-[52px] items-center gap-2 px-4 py-3 md:px-6 md:py-4 bg-white rounded-xl text-black text-[14px] md:text-base'>
+        <button
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className='flex justify-between w-[141px] md:w-[169px] md:h-[52px] items-center gap-2 px-4 py-3 md:px-6 md:py-4 bg-white hover:bg-[#24A0B5] hover:text-white border rounded-xl text-black text-[14px] md:text-base'>
             <p className="text-center">MY TICKETS</p>
-            <ArrRightIcon/>
+            {
+              hover ? <ArrSlantIcon/> : <ArrRightIcon/>
+            }
         </button>
     </header>
   )
