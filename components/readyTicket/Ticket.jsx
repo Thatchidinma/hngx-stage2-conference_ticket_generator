@@ -15,13 +15,15 @@ const Ticket = () => {
   const {name, email, request, ticketType,noTicket, imageUrl} = useContext(TicketDetailsContext)
   const {handleClearAndNavigate} = UseClear()
   const {handleDownloadImage} = UseDownloadImage()
-  const {show, setShow} = useState()
+  const isFilled = name && email && imageUrl
+
 
   const elementRef = useRef();
 
   return (
     <>
-    <div ref={elementRef} className='my-16 flex justify-center'>
+    { isFilled ?
+      <div ref={elementRef} className='my-16 flex justify-center'>
       <TickectBackground className=''/>
       <div className="m-5 absolute flex flex-col ">
         <div className="border border-border2  h-[444px] rounded-xl p-3.5  ">
@@ -69,8 +71,24 @@ const Ticket = () => {
         <Barcode className='m-auto mt-10'/>
       </div>
     </div>
-    <p className={` text-center md:text-end text-[12px] text-white/50`}>NB: download on a mobile device for best alignmet</p>
-    <ButtonPair text1={'Book Another Ticket'} text2={'Download Ticket'} onClick_1={()=>handleClearAndNavigate()} onClick_2={()=>{handleDownloadImage(elementRef)}}  className='gap-4' button2ClassName={`$`}/>
+    :
+    <div className='text-center border border-border2  h-fit w-[80%] m-auto bg-green-1 rounded-xl p-10 mb-8'>
+      <p className="mb-4"> You got here somehow 👀</p>
+      <p className="mb-4">you are definitely not booked o!!! please 😂</p>
+      <p className='mb-4'>Oya Oya click the <span className='font-semibold text-border2'>'book ticket'</span> button below <span > or the<span className='font-semibold text-border2'> 'Event'</span> in the navigation menu above </span> and fill out the form then you are all set to download your ticket</p>
+      <p className='font-semibold text-xl'>HAPPY BOOKING 🤗</p>
+
+    </div>
+    
+  
+  }
+   {isFilled && <p className={` text-center md:text-end text-[12px] text-white/50`}>NB: download on a mobile device for best alignmet</p>}
+    <ButtonPair 
+    text1={`${isFilled ? 'Book Another Ticket ' : ' Book Ticket'}`} 
+    text2={`${isFilled ? 'Download Ticket ' : 'Download disabled'}`} 
+    onClick_1={()=>handleClearAndNavigate()} 
+    onClick_2={()=>{isFilled && handleDownloadImage(elementRef)}}  
+    className='gap-4'/>
     </>
   )
 }
