@@ -7,12 +7,11 @@ import React, { useContext } from 'react'
 import { useRef } from "react";
 import html2canvas from "html2canvas";
 import ButtonPair from '../layout/ButtonPair'
-import samp from '@/public/sample.png'
 import { useRouter } from 'next/navigation'
 
 
 const Ticket = () => {
-  const {name, email, request, ticketType,noTicket,} = useContext(TicketDetailsContext)
+  const {name, email, request, ticketType,noTicket, imageUrl} = useContext(TicketDetailsContext)
 
   const route = useRouter();
 
@@ -46,12 +45,13 @@ const Ticket = () => {
               <p className='text-xs'>📍 04 Rumens road, Ikoyi, Lagos</p>
               <p className='text-xs mt-1'>📅 March 15, 2025 | 7:00 PM</p>
              </div>
-             <div className='border-4 border-[#24A0B5] rounded-xl mx-auto my-5 w-[130px] h-[130px] overflow-hidden'>
+             <div className='border-4 border-[#24A0B5] rounded-xl mx-auto my-5 h-fit w-fit overflow-hidden'>
              <Image
               width={130}
               height={130}
-              src={samp}
+              src={imageUrl}
               alt='tickect image'
+              className=' w-[130px] h-[130px] object-cover'
              />
              </div>
           </div>
@@ -83,7 +83,7 @@ const Ticket = () => {
         <Barcode className='m-auto mt-10'/>
       </div>
     </div>
-    <ButtonPair text1={'Book Another Ticket'} text2={'Download Ticket'} onClick_1={()=>{route.push("/event", localStorage.clear() )}} onClick_2={()=>{handleDownloadImage(), localStorage.clear()}}  className='gap-4'/>
+    <ButtonPair text1={'Book Another Ticket'} text2={'Download Ticket'} onClick_1={()=>{route.push("/event" )}} onClick_2={()=>{handleDownloadImage(), localStorage.clear()}}  className='gap-4'/>
     </>
   )
 }

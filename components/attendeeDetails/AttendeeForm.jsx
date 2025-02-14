@@ -15,11 +15,17 @@ const AttendeeForm = () => {
   const {name, setName,email, setEmail, request, setRequest} = useContext(TicketDetailsContext)
   
   const schema = z.object({
-    name : z.string().min(2).max(10),
+    name : z.string()
+    .min(2,'name cannot be less than 2 characters' )
+    .max(10, 'name cannot be more than 10 characters, PS:enter just one name'),
     email : z.string().email(),
-    specialRequest : z.union([z.string().length(0), z.string().min(2).max(60)])
-    .optional()
-  })
+    specialRequest : z.union([
+      z.string().length(0), 
+      z.string()
+      .min(2, 'request cannot be less than 2 characters')
+      .max(60, 'request cannot be more than 60 characters, PS:keep it simple!' )])
+    .optional(),
+    })
 
   const {register, handleSubmit,watch, formState:{errors}} = useForm({resolver: zodResolver(schema)})
 
@@ -51,7 +57,7 @@ const AttendeeForm = () => {
         <div className="mb-8">
           <label htmlFor="name">Enter your name</label>
           <input id='name' onChange={(e)=> setName(e.target.value)} name='name' {...register('name')} type="text" className='bg-inherit border border-border w-full rounded-2xl mt-2 outline-none p-3'/>
-          {errors.name && <p className='text-sm text-red-400 mt-1'>name should be between 2-10 letters, PS:enter just one name</p>}
+          {errors.name && <p className='text-sm text-red-400 mt-1'>{errors.name.message}</p>}
         </div>
 
         <div className="mb-8">
@@ -60,13 +66,13 @@ const AttendeeForm = () => {
           <Envelope className='absolute left-4 top-5'/>
           <input name='email' id='email' {...register('email')} placeholder='hello@gmail.com' type="email" className='bg-inherit border border-border w-full rounded-2xl mt-2 outline-none pl-12 p-3 placeholder:text-white'/>
         </div>
-        {errors.email && <p className='text-sm text-red-400 mt-1'>{errors.email.message}</p>}
+        {errors.email && <p className='text-sm text-red-400 mt-1'>{errors.email.message}, please enter a valid email</p>}
         </div>
 
         <div className="mb-8">
         <label htmlFor="request">Special request?</label>
         <textarea id='request' name='request' {...register('specialRequest')} className='bg-inherit border border-border w-full rounded-2xl mt-2  outline-none p-3 ' rows={4}></textarea>
-        {errors.specialRequest && (<p className='text-sm text-red-400 mt-1'>Should not be more than 60 characters</p>)}
+        {errors.specialRequest && (<p className='text-sm text-red-400 mt-1'>{errors.specialRequest.message}</p>)}
         </div>
 
         <ButtonPair text1={'Back'} text2={'Get My Free Ticket'} onClick_1={()=>{route.push("/event")}} className='gap-4'/>

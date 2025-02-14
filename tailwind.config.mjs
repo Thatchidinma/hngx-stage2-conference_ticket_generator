@@ -14,6 +14,9 @@ export default {
         border: '#0E464F',
         'border2': '#2BA4B9',
         'green-1' : '#041E23'
+      },
+      animation: {
+        'spin-slow': 'spin 0.5s ease-in infinite',
       }
     },
   },
