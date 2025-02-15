@@ -8,9 +8,7 @@ export const UseClear =()=>{
 
    const handleClearAndNavigate = () => {
     localStorage.clear();
-    setTimeout(() => {
       router.push("/event");
-    }, 100); 
      setName("");
       setEmail("");
       setTicketType("REGULAR");

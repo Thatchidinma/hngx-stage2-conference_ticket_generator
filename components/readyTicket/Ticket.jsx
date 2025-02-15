@@ -77,7 +77,6 @@ const Ticket = () => {
       <p className="mb-4">you are definitely not booked o!!! please 😂</p>
       <p className='mb-4'>Oya Oya click the <span className='font-semibold text-border2'>'book ticket'</span> button below <span > or the<span className='font-semibold text-border2'> 'Event'</span> in the navigation menu above </span> and fill out the form then you are all set to download your ticket</p>
       <p className='font-semibold text-xl'>HAPPY BOOKING 🤗</p>
-
     </div>
     
   

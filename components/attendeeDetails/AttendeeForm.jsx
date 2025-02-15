@@ -22,8 +22,7 @@ const AttendeeForm = () => {
     email : z.string().email(),
     specialRequest : z.union([
       z.string().length(0), 
-      z.string()
-      .min(2, 'request cannot be less than 2 characters')
+      z.string().min(2, 'request cannot be less than 2 characters but can be empty')
       .max(60, 'request cannot be more than 60 characters, PS:keep it simple!' )])
     .optional(),
     })
@@ -79,7 +78,7 @@ const AttendeeForm = () => {
         <div className="mb-8">
         <label htmlFor="request">Special request?</label>
         <textarea id='request' name='request' {...register('specialRequest')} className='bg-inherit border border-border w-full rounded-2xl mt-2  outline-none p-3 ' rows={4}></textarea>
-        {errors.specialRequest && (<p className='text-sm text-red-400 mt-1'>{errors.specialRequest.message}</p>)}
+        {errors.specialRequest && (<p className='text-sm text-red-400 mt-1'>request should be between 2-60 characters or can be empty!, PS:keep it simple</p>)}
         </div>
 
         <ButtonPair text1={'Back'} text2={'Get My Free Ticket'} onClick_1={()=>{route.push("/event")}} className='gap-4'/>
