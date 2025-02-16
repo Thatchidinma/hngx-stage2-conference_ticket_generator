@@ -12,7 +12,7 @@ import { TicketDetailsContext } from '@/context/TickectDetailsContext'
 
 const AttendeeForm = () => {
   const route = useRouter();
-  const {name, setName,email, setEmail, request, setRequest, imageUrl} = useContext(TicketDetailsContext)
+  const {name, setName,email, setEmail, request, setRequest, imageUrl, ticketType} = useContext(TicketDetailsContext)
   const [isImagefilled, setImagefilled] = useState(true)
   
   const schema = z.object({
@@ -81,7 +81,7 @@ const AttendeeForm = () => {
         {errors.specialRequest && (<p className='text-sm text-red-400 mt-1'>request should be between 2-60 characters or can be empty!, PS:keep it simple</p>)}
         </div>
 
-        <ButtonPair text1={'Back'} text2={'Get My Free Ticket'} onClick_1={()=>{route.push("/event")}} className='gap-4'/>
+        <ButtonPair text1={'Back'} text2={`Get My ${ticketType} Ticket`} onClick_1={()=>{route.push("/event")}} className='gap-4'/>
       </form>
     </section>
   )
